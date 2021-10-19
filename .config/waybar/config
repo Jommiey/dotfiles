@@ -1,0 +1,73 @@
+{
+    "position": "bottom", 
+    "height": 30,
+    "width": 50,
+    "modules-center": ["custom/spotify"],
+    "modules-left": ["sway/workspaces"],
+    "modules-right": ["pulseaudio", "network", "custom/date", "clock"],
+    "margin-bottom": 10,
+    "margin-right": 1715,
+    "margin-left": 1716,
+    // Modules configuration
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{icon}",
+	 	"persistent_workspaces": {
+	 		"1": [],
+	 		"2": [],
+	 		"3": [],
+	},
+         	"format-icons": {
+             		"1": "1",
+             		"2": "2",
+             		"3": "3",
+             		"4": "4",
+             		"5": "5",
+             		"6": "6",
+             		"7": "7",
+             		"8": "8",
+             		"9": "9",
+             		"10": "10"
+        	}
+     	},
+	"custom/date": {
+		"format": "󰸗 {}",
+		"interval": 3600,
+		"exec": "./custom_modules/waybar-date.sh"
+	},
+	"custom/spotify": {
+		"exec": "/usr/bin/python3 /home/jmi/.config/waybar/custom_modules/spotify.py --player spotify",
+		"format": "{}",
+		"return-type": "json",
+		"on-click": "playerctl play-pause",
+		"on-scroll-up": "playerctl next",
+		"on-scroll-down": "playerctl previous"
+	},
+	"clock": {
+		"format": "{:%H:%M}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}"
+	},
+	"network": {
+		"format-wifi": "  {essid}",
+		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "󰤮 Disconnected",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	"pulseaudio": {
+		"format": "{icon}  {volume}%",
+		"format-muted": "󰖁 Muted",
+	"format-icons": {
+	    "headphone": "",
+	    "hands-free": "",
+	    "headset": "",
+	    "phone": "",
+	    "portable": "",
+	    "car": "",
+	    "default": ["", "", ""]
+	},
+	"on-click": "pavucontrol"
+    }
+}
