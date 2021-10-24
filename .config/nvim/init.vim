@@ -1,5 +1,7 @@
 source $HOME/.config/nvim/vim-plug/plugins.vim
 
+
+" SETS
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -30,13 +32,31 @@ set cmdheight=2
 set updatetime=50
 set shortmess+=c
 
+
+" LUA SETUPS
+lua << END
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true
+    }
+}
+
+require'lspconfig'.pyright.setup{}
+
+require'lualine'.setup {
+    options = {
+        theme = 'nord'
+    }
+}
+END
+
+
+" COLORSCHEME
 colorscheme nord
 
+
+" REMAPS
 let mapleader = " "
-
-" Grep with telescope
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-
 "
 nnoremap <leader>pv :Sex!<CR>
 
